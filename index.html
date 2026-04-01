@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Turquoise Princess | Fine Turquoise Jewelry</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <img src="logo7.png" alt="Turquoise Princess" class="logo-img" />
+        <span class="logo-text" data-i18n="brand">Turquoise Princess</span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#home" data-i18n="nav_home">Home</a>
+        <a href="#collections" data-i18n="nav_collections">Collections</a>
+        <a href="#about" data-i18n="nav_about">About</a>
+        <a href="#contact" data-i18n="nav_contact">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="lang-toggle" id="langToggle" onclick="toggleLang()">中文</button>
+        <button class="cart-btn" id="cartBtn">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3 data-i18n="cart_title">Shopping Cart</h3>
+      <button onclick="closeCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <p class="cart-empty" data-i18n="cart_empty">Your cart is empty</p>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total">
+        <span data-i18n="cart_total">Total:</span>
+        <span id="cartTotal">$0.00</span>
+      </div>
+      <button class="btn-primary cart-checkout" onclick="proceedToCheckout()" data-i18n="cart_checkout">Checkout</button>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-tag" data-i18n="hero_tag">Authentic Native American Style</p>
+      <h1 class="hero-title" data-i18n="hero_title">Where Earth Meets<br>Elegance</h1>
+      <p class="hero-sub" data-i18n="hero_sub">Handcrafted turquoise jewelry that tells the story of the American Southwest. Each piece is a unique work of art.</p>
+      <div class="hero-btns">
+        <a href="#collections" class="btn-primary" data-i18n="hero_cta">Shop Collection</a>
+        <a href="#about" class="btn-outline" data-i18n="hero_cta2">Our Story</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">500+</span><span class="stat-label" data-i18n="stat1">Unique Pieces</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">12K+</span><span class="stat-label" data-i18n="stat2">Happy Customers</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">100%</span><span class="stat-label" data-i18n="stat3">Authentic Stone</span></div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="hero-img-wrap">
+        <img src="image01.png" alt="Turquoise Jewelry" />
+        <div class="hero-badge" data-i18n="hero_badge">Free Shipping<br>Over $99</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Bar -->
+  <section class="features-bar">
+    <div class="features-inner">
+      <div class="feature">
+        <span class="feature-icon">🚚</span>
+        <div><strong data-i18n="feat1_title">Free US Shipping</strong><p data-i18n="feat1_desc">On orders over $99</p></div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🔒</span>
+        <div><strong data-i18n="feat2_title">Secure Payment</strong><p data-i18n="feat2_desc">256-bit SSL encrypted</p></div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">↩️</span>
+        <div><strong data-i18n="feat3_title">30-Day Returns</strong><p data-i18n="feat3_desc">Hassle-free returns</p></div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">💎</span>
+        <div><strong data-i18n="feat4_title">Certified Authentic</strong><p data-i18n="feat4_desc">Genuine turquoise stones</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collections -->
+  <section class="collections" id="collections">
+    <div class="section-header">
+      <p class="section-tag" data-i18n="col_tag">Handcrafted with Love</p>
+      <h2 data-i18n="col_title">Our Collections</h2>
+      <p data-i18n="col_desc">Each piece is lovingly crafted by skilled artisans using genuine turquoise stones sourced from the American Southwest.</p>
+    </div>
+    <div class="category-tabs">
+      <button class="tab active" onclick="filterProducts('all')" data-i18n="tab_all">All</button>
+      <button class="tab" onclick="filterProducts('necklace')" data-i18n="tab_necklace">Necklaces</button>
+      <button class="tab" onclick="filterProducts('ring')" data-i18n="tab_ring">Rings</button>
+      <button class="tab" onclick="filterProducts('bracelet')" data-i18n="tab_bracelet">Bracelets</button>
+      <button class="tab" onclick="filterProducts('earring')" data-i18n="tab_earring">Earrings</button>
+    </div>
+    <div class="products-grid" id="productsGrid"></div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="about-image">
+      <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=600&q=80" alt="Artisan crafting jewelry" />
+      <div class="about-badge">
+        <span class="about-badge-num">15+</span>
+        <span data-i18n="about_badge">Years of Craftsmanship</span>
+      </div>
+    </div>
+    <div class="about-content">
+      <p class="section-tag" data-i18n="about_tag">Our Story</p>
+      <h2 data-i18n="about_title">Born from the Heart of the Southwest</h2>
+      <p data-i18n="about_p1">Founded in Santa Fe, New Mexico, Turquoise Princess was born from a deep love for the ancient art of turquoise jewelry making. For over 15 years, we have been connecting people with the beauty and healing energy of genuine turquoise.</p>
+      <p data-i18n="about_p2">Every piece in our collection is handcrafted by skilled artisans using traditional techniques passed down through generations. We work directly with mines to ensure each stone is 100% genuine and ethically sourced.</p>
+      <div class="about-values">
+        <div class="value"><span>✓</span><span data-i18n="val1">100% Genuine Turquoise</span></div>
+        <div class="value"><span>✓</span><span data-i18n="val2">Ethically Sourced</span></div>
+        <div class="value"><span>✓</span><span data-i18n="val3">Handcrafted by Artisans</span></div>
+        <div class="value"><span>✓</span><span data-i18n="val4">Certificate of Authenticity</span></div>
+      </div>
+      <a href="#collections" class="btn-primary" data-i18n="about_cta">Explore Our Jewelry</a>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="section-header">
+      <p class="section-tag" data-i18n="testi_tag">Customer Love</p>
+      <h2 data-i18n="testi_title">What Our Customers Say</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p data-i18n="testi1">"The necklace I bought is absolutely stunning. The turquoise color is so vibrant and the silver work is incredibly detailed. I get compliments every time I wear it!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">S</div>
+          <div><strong>Sarah M.</strong><span>Santa Fe, NM</span></div>
+        </div>
+      </div>
+      <div class="testi-card featured">
+        <div class="stars">★★★★★</div>
+        <p data-i18n="testi2">"I've ordered three pieces now and each one is perfect. The quality is outstanding and shipping was fast. This is my go-to place for gifts and treats for myself!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">J</div>
+          <div><strong>Jennifer K.</strong><span>Austin, TX</span></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p data-i18n="testi3">"Beautiful craftsmanship! The bracelet came with a certificate of authenticity which really gave me confidence in the purchase. Will definitely shop here again."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">M</div>
+          <div><strong>Michael R.</strong><span>Denver, CO</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <div class="newsletter-inner">
+      <div class="newsletter-text">
+        <h2 data-i18n="news_title">Join Our Tribe</h2>
+        <p data-i18n="news_desc">Subscribe for exclusive offers, new arrivals, and the story behind each piece.</p>
+      </div>
+      <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+        <input type="email" id="emailInput" data-i18n-placeholder="news_placeholder" placeholder="Enter your email address" required />
+        <button type="submit" class="btn-primary" data-i18n="news_btn">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="section-header">
+      <p class="section-tag" data-i18n="contact_tag">Get in Touch</p>
+      <h2 data-i18n="contact_title">We'd Love to Hear From You</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <span class="contact-icon">📍</span>
+          <div>
+            <strong data-i18n="contact_addr_label">Address</strong>
+            <p>123 Turquoise Trail, Santa Fe, NM 87501, USA</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📧</span>
+          <div>
+            <strong data-i18n="contact_email_label">Email</strong>
+            <p>hello@turquoiseprincess.com</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📞</span>
+          <div>
+            <strong data-i18n="contact_phone_label">Phone</strong>
+            <p>+1 (505) 555-0192</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">🕐</span>
+          <div>
+            <strong data-i18n="contact_hours_label">Hours</strong>
+            <p data-i18n="contact_hours">Mon–Fri: 9am–6pm MST</p>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="sendMessage(event)">
+        <div class="form-row">
+          <input type="text" data-i18n-placeholder="form_name" placeholder="Your Name" required />
+          <input type="email" data-i18n-placeholder="form_email" placeholder="Your Email" required />
+        </div>
+        <input type="text" data-i18n-placeholder="form_subject" placeholder="Subject" required />
+        <textarea data-i18n-placeholder="form_message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit" class="btn-primary" data-i18n="form_send">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo"><img src="logo7.png" alt="Turquoise Princess" class="logo-img" /><span data-i18n="brand">Turquoise Princess</span></a>
+        <p data-i18n="footer_desc">Bringing the beauty of authentic turquoise jewelry to your doorstep, one handcrafted piece at a time.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram" title="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook" title="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" aria-label="Pinterest" title="Pinterest">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+          </a>
+          <a href="#" aria-label="X (Twitter)" title="X (Twitter)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" aria-label="TikTok" title="TikTok">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.19 8.19 0 004.79 1.53V6.75a4.85 4.85 0 01-1.02-.06z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4 data-i18n="footer_shop">Shop</h4>
+        <a href="#" data-i18n="tab_necklace">Necklaces</a>
+        <a href="#" data-i18n="tab_ring">Rings</a>
+        <a href="#" data-i18n="tab_bracelet">Bracelets</a>
+        <a href="#" data-i18n="tab_earring">Earrings</a>
+      </div>
+      <div class="footer-links">
+        <h4 data-i18n="footer_help">Help</h4>
+        <a href="#" data-i18n="footer_faq">FAQ</a>
+        <a href="#" data-i18n="footer_shipping">Shipping Policy</a>
+        <a href="#" data-i18n="footer_returns">Returns</a>
+        <a href="#" data-i18n="footer_size">Size Guide</a>
+      </div>
+      <div class="footer-links">
+        <h4 data-i18n="footer_company">Company</h4>
+        <a href="#" data-i18n="nav_about">About Us</a>
+        <a href="#" data-i18n="nav_contact">Contact</a>
+        <a href="#" data-i18n="footer_privacy">Privacy Policy</a>
+        <a href="#" data-i18n="footer_terms">Terms of Service</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p data-i18n="footer_copy">© 2026 Turquoise Princess. All rights reserved.</p>
+      <div class="payment-icons">
+        <span>VISA</span><span>MC</span><span>AMEX</span><span>PayPal</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
