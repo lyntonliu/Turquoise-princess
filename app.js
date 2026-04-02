@@ -264,6 +264,17 @@ function filterProducts(category) {
   renderProducts(category);
 }
 
+function goToCategory(category) {
+  activeFilter = category;
+  document.querySelectorAll('.tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.filter === category);
+  });
+  renderProducts(category);
+  setTimeout(() => {
+    document.getElementById('collections').scrollIntoView({ behavior: 'smooth' });
+  }, 50);
+}
+
 function renderProducts(filter) {
   const grid = document.getElementById('productsGrid');
   const t    = i18n[currentLang];
