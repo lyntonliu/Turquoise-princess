@@ -515,14 +515,68 @@ document.querySelectorAll('.nav a').forEach(a => {
 // ===== Forms =====
 function subscribeNewsletter(e) {
   e.preventDefault();
-  showToast(i18n[currentLang].toast_subscribe);
-  document.getElementById('emailInput').value = '';
+  const email = document.getElementById('emailInput').value.trim();
+  if (!email) return;
+
+  fetch('https://a.klaviyo.com/client/subscriptions/?company_id=XnvMrQ', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'revision': '2023-12-15'
+    },
+    body: JSON.stringify({
+      data: {
+        type: 'subscription',
+        attributes: {
+          profile: {
+            data: {
+              type: 'profile',
+              attributes: { email: email }
+            }
+          }
+        },
+        relationships: {
+          list: {
+            data: { type: 'list', id: 'YdYQYu' }
+          }
+        }
+      }
+    })
+  })
+  .then(res => {
+    if (res.ok || res.status === 202) {
+      showToast(i18n[currentLang].toast_subscribe);
+      document.getElementById('emailInput').value = '';
+    } else {
+      showToast(currentLang === 'zh' ? '订阅失败，请稍后再试' : 'Subscription failed. Please try again.');
+    }
+  })
+  .catch(() => {
+    showToast(currentLang === 'zh' ? '网络错误，请稍后再试' : 'Network error. Please try again.');
+  });
 }
 
-function sendMessage(e) {
+function handleContactForm(e) {
   e.preventDefault();
-  showToast(i18n[currentLang].toast_message);
-  e.target.reset();
+  const form = e.target;
+  const data = new FormData(form);
+
+  fetch('https://formspree.io/f/xwvwnyvj', {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(res => {
+    if (res.ok) {
+      showToast(i18n[currentLang].toast_message);
+      form.reset();
+    } else {
+      showToast(currentLang === 'zh' ? '发送失败，请稍后再试' : 'Failed to send. Please try again.');
+    }
+  })
+  .catch(() => {
+    showToast(currentLang === 'zh' ? '网络错误，请稍后再试' : 'Network error. Please try again.');
+  });
 }
 
 // ===== Toast =====
