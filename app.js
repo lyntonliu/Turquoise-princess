@@ -1,7 +1,7 @@
 // ===== Shopify Config =====
 const SHOPIFY = {
-  domain: 'turquoise-princess.myshopify.com',
-  token:  'd73ebde027ca941da0ccea23e3c60d1f',
+  domain: 'turquoiseprincess.myshopify.com',
+  token:  'a4e0d97236af97c0a90452fedf019079',
   api:    '2024-10',
 };
 const SHOPIFY_URL = `https://${SHOPIFY.domain}/api/${SHOPIFY.api}/graphql.json`;
@@ -529,7 +529,7 @@ function subscribeNewsletter(e) {
   const email = document.getElementById('emailInput').value.trim();
   if (!email) return;
 
-  fetch('https://a.klaviyo.com/client/subscriptions/?company_id=XnvMrQ', {
+  fetch('https://a.klaviyo.com/client/subscriptions/?company_id=WGrd9q', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -548,7 +548,7 @@ function subscribeNewsletter(e) {
         },
         relationships: {
           list: {
-            data: { type: 'list', id: 'YdYQYu' }
+            data: { type: 'list', id: 'TZ5vPB' }
           }
         }
       }
